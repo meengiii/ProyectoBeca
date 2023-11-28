@@ -1,0 +1,96 @@
+body {
+    background-image: url('../imagenes/erasmus.jpg');
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.contenedor {
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    width: 40%;
+    height: 45%;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+input{
+    background-color: rgb(236, 229, 229);
+}
+h2 {
+    margin: 0 0 20px;
+    margin-bottom: 4%;
+}
+
+.grupo-imput {
+    margin-bottom: 20px;
+    margin-right: 45px;
+    margin-left: 25px;
+}
+
+.grupo-imput label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.grupo-imput input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.olvido {
+    color: #696a6a;
+    margin-top: 300px;
+    text-decoration: underline;
+}
+
+
+.botones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Alinea verticalmente los elementos en el centro */
+}
+
+.botones button, .botones input {
+    padding: 15px 30px; /* Aumenta el padding para hacer los botones más grandes */
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.registro {
+    margin: 5% 2% 7% 4%; /* Sube el botón hacia arriba (ajusta el valor superior) */
+    background-color: #696a6a;
+    color: #fff;
+}
+
+#inicioSesion {
+    margin: 2% 20px 5% 0; /* Sube el botón hacia arriba (ajusta el valor superior) */
+    background-color: #696a6a;
+    color: #fff;
+}
+
+#nuevoRegistro {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+p {
+    margin: 0;
+}
+
+
+
+
+
