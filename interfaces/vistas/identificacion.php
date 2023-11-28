@@ -14,30 +14,32 @@
     require_once $_SERVER["DOCUMENT_ROOT"] . "/helpers/autocargador.php";
     
     
-    // //creamos validator
-    // $valida = new Validator();
-    // //comprobamos que se ha hecho el post de formulario
-    // if (isset($_POST['login'])) {
-    //     //creamos conexion y login
-    //     $conn = DB::abreConexion();
-    //     $login = new login($conn);
+    //creamos validator
+    $valida = new Validator();
+    //comprobamos que se ha hecho el post de formulario
+    if (isset($_POST['login'])) 
+    {
+        //creamos conexion y login
+        $conn = DB::abreConexion();
+        $login = new login($conn);
 
-    //     //validamos
-    //     $valida->Requerido('nombre');
-    //     $valida->Requerido('pass');
-    //     //Comprobamos validacion
-    //     if ($valida->ValidacionPasada()) {
-    //         if (!empty($_POST['nombre']) && !empty($_POST['pass'])) 
-    //         {
-    //             $userRepository = new UserRepository($conn);
-    //             $user = $userRepository->encuentra($_POST['nombre'], md5($_POST['pass']));
-    //             if ($login->user_login($user)) 
-    //             {
-    //                 header("location:?menu=homeAlu");
-    //             }
-    //         }
-    //     }
-    // }
+        //validamos
+        $valida->Requerido('dni');
+        $valida->Requerido('password');
+        //Comprobamos validacion
+        if ($valida->ValidacionPasada()) 
+        {
+            if (!empty($_POST['dni']) && !empty($_POST['password'])) 
+            {
+                $userRepository = new UserRepository($conn);
+                $user = $userRepository->encuentra($_POST['dni'],($_POST['pass']));
+                if ($login->user_login($user)) 
+                {
+                    header("location:?menu=registro");
+                }
+            }
+        }
+    }
 
     ?>
 
