@@ -1,0 +1,89 @@
+body {
+    background-image: url('../imagenes/erasmus.jpg');
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.contenedor {
+    background-color: rgba(255, 255, 255);
+    border-radius: 10px;
+    width: 40%;
+    height: 45%;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    margin: 0 0 20px;
+}
+
+input{
+    background-color: rgb(236, 229, 229);
+}
+
+.grupo-imput {
+    margin-bottom: 25px;
+    margin-right: 40px;
+    margin-left: 25px;
+}
+
+.grupo-imput label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.grupo-imput input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.olvido {
+    margin-top: 300px;
+    text-decoration: underline;
+}
+
+
+.botones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#regis  {
+    margin: 0;
+}
+.botones input {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 10px 0; /* Añade margen para separar el botón del siguiente elemento */
+}
+
+
+#nuevoRegistro{
+  color: white; 
+  text-decoration: none; 
+}
+
+
+.registro {
+    background-color: #696a6a;
+    color: #fff;
+    text-align: center;
+}
+a{
+    color: #696a6a;
+}
