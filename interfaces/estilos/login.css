@@ -58,11 +58,11 @@ h2 {
 .botones {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Alinea verticalmente los elementos en el centro */
+    align-items: center; 
 }
 
 .botones button, .botones input {
-    padding: 15px 30px; /* Aumenta el padding para hacer los botones más grandes */
+    padding: 15px 30px; 
     border: none;
     border-radius: 30px;
     cursor: pointer;
@@ -70,13 +70,13 @@ h2 {
 }
 
 .registro {
-    margin: 5% 2% 7% 4%; /* Sube el botón hacia arriba (ajusta el valor superior) */
+    margin: 5% 2% 7% 4%; 
     background-color: #696a6a;
     color: #fff;
 }
 
 #inicioSesion {
-    margin: 2% 20px 5% 0; /* Sube el botón hacia arriba (ajusta el valor superior) */
+    margin: 2% 20px 5% 0; 
     background-color: #696a6a;
     color: #fff;
 }
