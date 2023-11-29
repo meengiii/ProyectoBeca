@@ -15,20 +15,24 @@
     $valida = new Validator();
 
     // Comprobamos que se ha hecho el post de formulario
-    if (isset($_POST['login'])) {
+    if (isset($_POST['login'])) 
+    {
         $conn = DB::abreConexion();
         $login = new login($conn);
 
         // Validamos
-        $valida->Requerido('nombre'); 
-        $valida->Requerido('pass');   
+        $valida->Requerido('dni'); 
+        $valida->Requerido('password');   
     
         // Comprobamos validacion
-        if ($valida->ValidacionPasada()) {
-            if (!empty($_POST['nombre']) && !empty($_POST['pass'])) {
-                $candidatoRepository = new CandidatoRepository($conn);
-                $user = $candidatoRepository->encuentra($_POST['nombre'], $_POST['pass']);
-                if ($login->user_login($user)) {
+        if ($valida->ValidacionPasada()) 
+        {
+            if (!empty($_POST['dni']) && !empty($_POST['password'])) 
+            {
+                $candidatoRepository = new candidatoRepository($conn);
+                $user = $candidatoRepository->encuentra($_POST['dni'], $_POST['password']);
+                if ($login->user_login($user)) 
+                {
                     header("location: ?menu=home"); 
                     exit(); 
                 }
@@ -42,11 +46,13 @@
             <h2>Consultorio Becas</h2>
             <div class="grupo-imput">
                 <label for="username">DNI</label>
-                <p><input type="text" id="username" name="nombre" placeholder="DNI"></p>
+                <p><input type="text" id="username" name="dni" placeholder="DNI"></p>
+                <span class="error"><?= $valida->ImprimirError('dni') ?></span>
             </div>
             <div class="grupo-imput">
                 <label for="password">Contraseña</label>
-                <p><input type="password" name="pass" placeholder="Contraseña" id="password"></p>
+                <p><input type="password" name="password" placeholder="Contraseña" id="password"></p>
+                <span class="error"><?= $valida->ImprimirError('password') ?></span>
             </div>
             <a class="olvido" href="index.php?menu=olvido">¿Olvidó su contraseña?</a>
             <div class="botones">

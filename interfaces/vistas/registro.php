@@ -9,47 +9,48 @@
 </head>
 
 <body>
-    <?php
+<?php
+    $valida = new Validator();
 
-        $valida = new Validator();
-        
-        if (isset($_POST['registro'])) 
-        {
-            $conn = db::abreConexion();
-            $candidatoRepository = new CandidatoRepository($conn);
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['registro'])) 
+    {
+        $conn = DB::abreConexion();
 
-            // Verifica que los campos necesarios estén presentes y no estén vacíos
-            if (!empty($_POST['dni']) && !empty($_POST['password']) && !empty($_POST['apellidos']) && !empty($_POST['nombre']) && !empty($_POST['curso'])
-            && !empty($_POST['telefono']) && !empty($_POST['correo']) && !empty($_POST['domicilio']) && !empty($_POST['fecha_Nacimiento'])) 
+        $valida->Requerido('nombre');
+        $valida->Requerido('password');
+        $valida->Requerido('dni');
+        $valida->Requerido('apellidos');
+        $valida->Requerido('telefono');
+        $valida->Requerido('correo');
+        $valida->Requerido('domicilio');
+        $valida->Requerido('fecha_de_Nacimiento');
+
+        if ($valida->ValidacionPasada()) {
+            if (!empty($_POST['nombre']) && !empty($_POST['curso']) && !empty($_POST['password']) 
+            && !empty($_POST['dni']) && !empty($_POST['apellidos']) && !empty($_POST['telefono']) 
+            && !empty($_POST['correo']) && !empty($_POST['domicilio']) && !empty($_POST['fecha_de_Nacimiento'])) 
             {
-                // Crea un nuevo candidato y realiza la inserción en la base de datos
-                $newCandidato = new Candidatos(
-                    $_POST['dni'],
-                    $_POST['apellidos'],
-                    $_POST['nombre'],
-                    $_POST['curso'],
-                    $_POST['telefono'],
-                    $_POST['correo'],
-                    $_POST['domicilio'],
-                    $_POST['fechaNacimiento'],
-                    $_POST['password'],
-                    $_POST['rol']
+
+                // Convertir la fecha de nacimiento al formato adecuado
+                $fechaNacimiento = date('Y-m-d', strtotime($_POST['fecha_de_Nacimiento']));
+
+                // Validar si el campo de rol está vacío y establecerlo como "alumno"
+                $rol = !empty($_POST['rol']) ? $_POST['rol'] : "alumno";
+                $idCandidato = null;
+                $candidato = new Candidatos
+                (
+                    $idCandidato,$_POST['dni'],$_POST['apellidos'],$_POST['nombre'],$_POST['curso'],$_POST['telefono'],
+                    $_POST['correo'],$_POST['domicilio'],$fechaNacimiento,$_POST['password'],$rol
                 );
 
-                $candidatoRepository->crearCandidato(
-                    $newCandidato->getDni(),
-                    $newCandidato->getApellidos(),
-                    $newCandidato->getNombre(),
-                    $newCandidato->getCurso(),
-                    $newCandidato->getTelefono(),
-                    $newCandidato->getCorreo(),
-                    $newCandidato->getDomicilio(),
-                    $newCandidato->getFechaNacimiento(),
-                    $newCandidato->getPassword(),
-                    $newCandidato->getRol()
-                );
+                // Insertar los datos en la base de datos
+                $repositorio = new CandidatoRepository($conn);
+                $repositorio->crearCandidato($candidato);
+                echo '<p class="mensaje-confirmacion">Registro exitoso. ¡Bienvenido!</p>'; 
+                header('location:?menu=login');
             }
         }
+    }
     ?>
 
     <div class="contenedor">
@@ -57,48 +58,48 @@
             <h2>Registro</h2>
             <div class="grupo-imput">
                 <label for="dni">DNI</label>
-                <p><input type="text" name="newUser" placeholder="DNI"></p>
-                <?= $valida->ImprimirError('dni') ?>
+                <p><input type="text" name="dni" placeholder="DNI"></p>
+                <span class="error"><?= $valida->ImprimirError('dni') ?></span>
             </div>
             <div class="grupo-imput">
                 <label for="apellidos">Apellidos</label>
                 <p><input type="text" name="apellidos" placeholder="Apellidos"></p>
-                <?= $valida->ImprimirError('apellidos') ?>
+                <span class="error"><?= $valida->ImprimirError('apellidos') ?></span>
             </div>
             <div class="grupo-imput">
                 <label for="nombre">Nombre</label>
                 <p><input type="text" name="nombre" placeholder="Nombre"></p>
-                <?= $valida->ImprimirError('nombre') ?>
+                <span class="error"><?= $valida->ImprimirError('nombre') ?></span>
             </div>
             <div class="grupo-imput">
                 <label for="curso">Curso</label>
                 <p><input type="text" name="curso" placeholder="Curso"></p>
-                <?= $valida->ImprimirError('curso') ?>
+                <span class="error"><?= $valida->ImprimirError('curso') ?></span>
             </div>
             <div class="grupo-imput">
                 <label for="telefono">Teléfono</label>
                 <p><input type="text" name="telefono" placeholder="Teléfono"></p>
-                <?= $valida->ImprimirError('telefono') ?>
+                <span class="error"><?= $valida->ImprimirError('telefono') ?></span>
             </div>
             <div class="grupo-imput">
                 <label for="correo">Correo</label>
                 <p><input type="text" name="correo" placeholder="Correo"></p>
-                <?= $valida->ImprimirError('correo') ?>
+                <span class="error"><?= $valida->ImprimirError('correo') ?></span>
             </div>
             <div class="grupo-imput">
                 <label for="domicilio">Domicilio</label>
                 <p><input type="text" name="domicilio" placeholder="Domicilio"></p>
-                <?= $valida->ImprimirError('domicilio') ?>
+                <span class="error"><?= $valida->ImprimirError('domicilio') ?></span>
             </div>
             <div class="grupo-imput">
                 <label for="fechaNacimiento">Fecha de Nacimiento</label>
-                <p><input type="date" name="fechaNacimiento"></p>
-                <?= $valida->ImprimirError('fecha_nacimiento') ?>
+                <p><input type="date" name="fecha_de_Nacimiento"></p>
+                <span class="error"><?= $valida->ImprimirError('fecha_de_Nacimiento') ?></span>
             </div>
             <div class="grupo-imput">
                 <label for="password">Contraseña</label>
-                <p><input type="password" name="newPw" placeholder="Contraseña"></p>
-                <?= $valida->ImprimirError('password') ?>
+                <p><input type="password" name="password" placeholder="Contraseña"></p>
+                <span class="error"><?= $valida->ImprimirError('password') ?></span>
             </div>
             <div class="botones">
                 <p id="regis"><input type="submit" name="registro" value="Registrarse" class="registro"></p>
@@ -106,7 +107,7 @@
             <p><a href="index.php?menu=login">¿Ya tienes cuenta?</a></p>
         </form>
     </div>
-    
+
 </body>
 
 </html>

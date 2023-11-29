@@ -14,18 +14,19 @@ class Candidatos {
     private $rol;
 
     // Constructor
-    public function __construct($DNI, $Apellidos, $Nombre, $Telefono, $correo, $Domicilio, $Fecha_nacimiento, $password, $rol, $curso = null) 
+    public function __construct($idCandidato, $DNI, $Apellidos, $Nombre, $curso, $Telefono, $correo, $Domicilio, $Fecha_nacimiento, $password, $rol)
     {
+        $this->idCandidato = $idCandidato;
         $this->DNI = $DNI;
         $this->Apellidos = $Apellidos;
         $this->Nombre = $Nombre;
+        $this->curso = $curso;
         $this->Telefono = $Telefono;
         $this->correo = $correo;
         $this->Domicilio = $Domicilio;
         $this->Fecha_nacimiento = $Fecha_nacimiento;
         $this->password = $password;
         $this->rol = $rol;
-        $this->curso = $curso;
     }
 
 
@@ -62,7 +63,7 @@ class Candidatos {
         return $this->Domicilio;
     }
 
-    public function getFechaNacimiento() {
+    public function getFecha_Nacimiento() {
         return $this->Fecha_nacimiento;
     }
 
@@ -107,7 +108,7 @@ class Candidatos {
         $this->Domicilio = $Domicilio;
     }
 
-    public function setFechaNacimiento($Fecha_nacimiento) {
+    public function setFecha_Nacimiento($Fecha_nacimiento) {
         $this->Fecha_nacimiento = $Fecha_nacimiento;
     }
 

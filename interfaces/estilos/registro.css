@@ -89,3 +89,7 @@ input{
 a{
     color: #696a6a;
 }
+.error {
+    color: red;
+    font-weight: bold;
+}
