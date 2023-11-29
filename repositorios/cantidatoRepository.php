@@ -90,12 +90,12 @@ class CandidatoRepository
     }
 
     //login
-    public function encuentra($nombre, $pass)
+    public function encuentra($dni, $pass)
     {
-        $query = "SELECT * FROM USER WHERE nombre = :nombre and password=:pass";
+        $query = "SELECT * FROM Candidatos WHERE dni = :dni and password=:password";
         $stmt = $this->conexion->prepare($query);
-        $stmt->bindParam(":nombre", $nombre, PDO::PARAM_STR);
-        $stmt->bindParam(":pass", $pass, PDO::PARAM_STR);
+        $stmt->bindParam(":dni", $dni, PDO::PARAM_STR);
+        $stmt->bindParam(":password", $pass, PDO::PARAM_STR);
         $stmt->execute();
 
         $result = $stmt->fetch(PDO::FETCH_ASSOC);

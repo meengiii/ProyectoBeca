@@ -31,8 +31,8 @@
         {
             if (!empty($_POST['dni']) && !empty($_POST['password'])) 
             {
-                $userRepository = new UserRepository($conn);
-                $user = $userRepository->encuentra($_POST['dni'],($_POST['pass']));
+                $candidatoRepository = new $candidatoRepository($conn);
+                $user = $candidatoRepository->encuentra($_POST['dni'],($_POST['pass']));
                 if ($login->user_login($user)) 
                 {
                     header("location:?menu=registro");
