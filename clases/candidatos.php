@@ -14,22 +14,8 @@ class Candidatos {
     private $rol;
 
     // Constructor
-    public function __construct($DNI, $Apellidos, $Nombre, $curso, $Telefono, $correo, $Domicilio, $Fecha_nacimiento, $password, $rol) 
+    public function __construct($DNI, $Apellidos, $Nombre, $Telefono, $correo, $Domicilio, $Fecha_nacimiento, $password, $rol, $curso = null) 
     {
-        $this->DNI = $DNI;
-        $this->Apellidos = $Apellidos;
-        $this->Nombre = $Nombre;
-        $this->Curso = $curso;
-        $this->Telefono = $Telefono;
-        $this->correo = $correo;
-        $this->Domicilio = $Domicilio;
-        $this->Fecha_nacimiento = $Fecha_nacimiento;
-        $this->password = $password;
-        $this->rol = $rol;
-    }
-
-    // Constructor sin curso
-    public function __construct2($DNI, $Apellidos, $Nombre, $Telefono, $correo, $Domicilio, $Fecha_nacimiento, $password, $rol) {
         $this->DNI = $DNI;
         $this->Apellidos = $Apellidos;
         $this->Nombre = $Nombre;
@@ -39,20 +25,9 @@ class Candidatos {
         $this->Fecha_nacimiento = $Fecha_nacimiento;
         $this->password = $password;
         $this->rol = $rol;
+        $this->curso = $curso;
     }
 
-    public function __construct3($DNI, $Apellidos, $Nombre, $curso, $Telefono, $correo, $Domicilio, $Fecha_nacimiento, $password) 
-    {
-        $this->DNI = $DNI;
-        $this->Apellidos = $Apellidos;
-        $this->Nombre = $Nombre;
-        $this->Curso = $curso;
-        $this->Telefono = $Telefono;
-        $this->correo = $correo;
-        $this->Domicilio = $Domicilio;
-        $this->Fecha_nacimiento = $Fecha_nacimiento;
-        $this->password = $password;
-    }
 
     // Getters
     public function getIdCandidato() {

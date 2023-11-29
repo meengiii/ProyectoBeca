@@ -9,44 +9,47 @@ class CandidatoRepository
     }
 
     //CREAR
-    public function crearCandidato($dni, $apellidos, $nombre, $curso, $telefono, $correo, $domicilio, $fechaNacimiento, $password, $rol)
+    public function crearCandidato($dni, $apellidos, $nombre, $curso, $telefono, $correo, $domicilio, $fechaNacimiento, $password)
     {
-        $query = "INSERT INTO candidatos (DNI, Apellidos, Nombre, curso, Telefono, correo, Domicilio, Fecha_nacimiento, password, rol) 
-                      VALUES (:dni, :apellidos, :nombre, :curso, :telefono, :correo, :domicilio, :fechaNacimiento, :password, :rol)";
-            $stmt = $this->conexion->prepare($query);
-            $stmt->bindParam(":dni", $dni, PDO::PARAM_STR);
-            $stmt->bindParam(":apellidos", $apellidos, PDO::PARAM_STR);
-            $stmt->bindParam(":nombre", $nombre, PDO::PARAM_STR);
-            $stmt->bindParam(":curso", $curso, PDO::PARAM_STR);
-            $stmt->bindParam(":telefono", $telefono, PDO::PARAM_STR);
-            $stmt->bindParam(":correo", $correo, PDO::PARAM_STR);
-            $stmt->bindParam(":domicilio", $domicilio, PDO::PARAM_STR);
-            $stmt->bindParam(":fechaNacimiento", $fechaNacimiento, PDO::PARAM_STR);
-            $stmt->bindParam(":password", $password, PDO::PARAM_STR);
-            $stmt->bindParam(":rol", $rol, PDO::PARAM_STR);
-            $stmt->execute();
-            header("Location: ?menu=login");
+        // Hash de la contraseña
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
+        $query = "INSERT INTO candidatos (DNI, Apellidos, Nombre, curso, Telefono, correo, Domicilio, Fecha_nacimiento, password) 
+                VALUES (:dni, :apellidos, :nombre, :curso, :telefono, :correo, :domicilio, :fechaNacimiento, :password)";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->bindParam(":dni", $dni, PDO::PARAM_STR);
+        $stmt->bindParam(":apellidos", $apellidos, PDO::PARAM_STR);
+        $stmt->bindParam(":nombre", $nombre, PDO::PARAM_STR);
+        $stmt->bindParam(":curso", $curso, PDO::PARAM_STR);
+        $stmt->bindParam(":telefono", $telefono, PDO::PARAM_STR);
+        $stmt->bindParam(":correo", $correo, PDO::PARAM_STR);
+        $stmt->bindParam(":domicilio", $domicilio, PDO::PARAM_STR);
+        $stmt->bindParam(":fechaNacimiento", $fechaNacimiento, PDO::PARAM_STR);
+        $stmt->bindParam(":password", $hashedPassword, PDO::PARAM_STR);
+        $stmt->execute();
+        header("Location: ?menu=login");
     }
+
     //BORRAR
     public function deleteUser($id)
     {
-        $query = "DELETE FROM USER WHERE IDUSER=:idUser";
+        $query = "DELETE FROM candidatos WHERE IDcandidatos=:idcandidatos";
         $stmt = $this->conexion->prepare($query);
-        $stmt->bindParam(":idUser", $id, PDO::PARAM_INT);
+        $stmt->bindParam(":idcandidatos", $id, PDO::PARAM_INT);
         $stmt->execute();
     }
     //UPDATE
-    public function updateUser($id, $nombre, $password)
+    // UPDATE
+    public function updateUser($id, $dni, $password)
     {
-        $query = "UPDATE USER SET NOMBRE=:nombre,PASSWORD=:password WHERE IDUSER=:idUser";
+        $query = "UPDATE candidatos SET DNI=:dni, password=:password WHERE IDcandidato=:idcandidato";
         $stmt = $this->conexion->prepare($query);
-        $stmt->bindParam(":nombre", $nombre, PDO::PARAM_STR);
+        $stmt->bindParam(":dni", $dni, PDO::PARAM_STR);
         $stmt->bindParam(":password", $password, PDO::PARAM_STR);
-        // $stmt->bindParam(":rol", $rol, PDO::PARAM_STR);
-        $stmt->bindParam(":idUser", $id, PDO::PARAM_INT);
+        $stmt->bindParam(":idcandidato", $id, PDO::PARAM_INT);
         $stmt->execute();
     }
+
 
     //update roles
     public function updateUserRol($id,$rol)

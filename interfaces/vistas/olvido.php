@@ -10,7 +10,7 @@
     <div class="contenedor">
         <h2>Olvidó su Contraseña</h2>
         <p>Por favor, ingrese su dirección de correo electrónico para restablecer su contraseña.</p>
-        <form action="procesar_formulario.php" method="POST">
+        <form action="index.php" method="POST">
             <div class="grupo">
                 <input type="email" id="email" name="email" placeholder="Correo Electrónico" required>
             </div>

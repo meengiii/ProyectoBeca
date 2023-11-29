@@ -26,10 +26,10 @@ if (isset($_GET['menu']))
         require_once $_SERVER["DOCUMENT_ROOT"] . '/interfaces/vistas/olvido.php';
     }
 
-    // if ($_GET['menu'] == "home") 
-    // {
-    //     require_once $_SERVER["DOCUMENT_ROOT"] . '/vistas/homeAlu.php';
-    // }
+    if ($_GET['menu'] == "home") 
+    {
+        require_once $_SERVER["DOCUMENT_ROOT"] . '/interfaces/vistas/home.php';
+    }
 
     // if ($_GET['menu'] == "homeadmin") 
     // {

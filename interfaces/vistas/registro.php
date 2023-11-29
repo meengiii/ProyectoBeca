@@ -10,10 +10,11 @@
 
 <body>
     <?php
+
         $valida = new Validator();
-        // Asegúrate de incluir las clases y métodos necesarios, como db::abreConexion(), UserRepository y createUser.
         
-        if (isset($_POST['registro'])) {
+        if (isset($_POST['registro'])) 
+        {
             $conn = db::abreConexion();
             $candidatoRepository = new CandidatoRepository($conn);
 

@@ -17,7 +17,8 @@ function autocargador($class)
         $file = $dir . $class . '.php';
 
         // Si el archivo de clase existe, lo incluye y sale del bucle
-        if (file_exists($file)) {
+        if (file_exists($file)) 
+        {
             include $file;
             return;
         }
