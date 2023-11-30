@@ -1,0 +1,30 @@
+#menuDesplegable {
+    position: absolute;
+    right: 0%; 
+    background-color: #d3cccc;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    margin-top: 10%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#menuDesplegable ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#menuDesplegable li {
+    margin: 5px 0;
+}
+
+#menuDesplegable a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    padding: 5px;
+}
+
+#menuDesplegable a:hover {
+    background-color: #e5e9ed; 
+    color: #000000;
+}

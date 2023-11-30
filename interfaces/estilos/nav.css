@@ -1,0 +1,38 @@
+#nav {
+    width: 100%;
+    padding: 10px;
+    background-color: #d3cccc;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3%;
+    border-top-left-radius: 9%; 
+    border-top-right-radius: 9%;
+}
+
+#izquierda,
+#centro,
+#derecha {
+    display: flex;
+    align-items: center;
+}
+
+#menuDesplegable {
+    display: none;
+}
+
+#imagenIzquierda {
+    margin-left: 25%;
+    width: 70px;
+    height: 70px;
+}
+
+#imagenDerecha {
+    margin-right: 25%;
+    width: 70px;
+    height: 70px;
+}
+
+h1 {
+    margin: 0;
+    color: black;
+}

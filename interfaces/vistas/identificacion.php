@@ -33,7 +33,7 @@
                 $user = $candidatoRepository->encuentra($_POST['dni'], $_POST['password']);
                 if ($login->user_login($user)) 
                 {
-                    header("location: ?menu=home"); 
+                    header("location: ?menu=crearConvocatoria"); 
                     exit(); 
                 }
             }

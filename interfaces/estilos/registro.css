@@ -1,5 +1,5 @@
 body {
-    background-image: url('../imagenes/erasmus.jpg');
+    background-image: url('../imagenes/fondo.jpeg');
     background-size: cover;
     background-position: center;
     font-family: Arial, sans-serif;
@@ -21,6 +21,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     overflow-y: auto;
     max-height: 400px; 
+    border-radius: 3%;
 }
 
 h2 {

@@ -11,8 +11,8 @@ class CandidatoRepository
     //CREAR
     public function crearCandidato($candidato)
     {
-        $query = "INSERT INTO Candidatos (DNI, Apellidos, Nombre, curso, Telefono, correo, Domicilio, Fecha_nacimiento, password)
-        VALUES (:dni, :apellidos, :nombre, :curso, :telefono, :correo, :domicilio, :fechaNacimiento, :password)";
+        $query = "INSERT INTO Candidatos (DNI, Apellidos, Nombre, curso, Telefono, correo, Domicilio, Fecha_nacimiento, password, rol)
+                  VALUES (:dni, :apellidos, :nombre, :curso, :telefono, :correo, :domicilio, :fechaNacimiento, :password, :rol)";
 
         $stmt = $this->conexion->prepare($query);
 
@@ -23,8 +23,9 @@ class CandidatoRepository
         $telefono = $candidato->getTelefono();
         $correo = $candidato->getCorreo();
         $domicilio = $candidato->getDomicilio();
-        $fechaNacimiento = $candidato->getFecha_nacimiento();
+        $fechaNacimiento = $candidato->getFecha_Nacimiento();
         $password = $candidato->getPassword();
+        $rol = $candidato->getRol(); // Corregir el nombre del método
 
         $stmt->bindParam(':dni', $dni);
         $stmt->bindParam(':apellidos', $apellidos);
@@ -35,14 +36,16 @@ class CandidatoRepository
         $stmt->bindParam(':domicilio', $domicilio);
         $stmt->bindParam(':fechaNacimiento', $fechaNacimiento);
         $stmt->bindParam(':password', $password);
+        $stmt->bindParam(':rol', $rol); // Agregar el valor del rol
 
         if ($stmt->execute()) 
         {
-            return true; 
+            return true;
         } else {
-            return false; 
+            return false;
         }
     }
+
 
     //BORRAR
     public function deleteUser($id)
@@ -66,7 +69,7 @@ class CandidatoRepository
 
 
     //update roles
-    public function updateUserRol($id,$rol)
+    public function updateUserRol($id, $rol)
     {
         $query = "UPDATE USER SET ROL=:rol WHERE IDUSER=:idUser";
         $stmt = $this->conexion->prepare($query);
@@ -95,7 +98,7 @@ class CandidatoRepository
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
-    
+
 
     public function getAllUserNoRol()
     {
@@ -118,8 +121,8 @@ class CandidatoRepository
         return $result;
     }
 
-    
 
-    
+
+
 }
 ?>
