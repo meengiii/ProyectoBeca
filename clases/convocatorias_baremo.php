@@ -1,90 +1,71 @@
 <?php
 
-class Convocatorias_Baremo
-{
-    private $idItemBarenables;
-    private $idConvocatorias;
+class ConvocatoriaBaremo {
+    // Propiedades de la clase
+    private $idItemBaremo;
+    private $idConvocatoria;
     private $maximoPuntos;
     private $requisito;
     private $minimo;
     private $presenta;
 
     // Constructor
-    public function __construct($idItemBarenables, $idConvocatorias, $maximoPuntos, $requisito, $minimo, $presenta)
-    {
-        $this->idItemBarenables = $idItemBarenables;
-        $this->idConvocatorias = $idConvocatorias;
+    public function __construct($idItemBaremo, $idConvocatoria, $maximoPuntos, $requisito, $minimo, $presenta) {
+        $this->idItemBaremo = $idItemBaremo;
+        $this->idConvocatoria = $idConvocatoria;
         $this->maximoPuntos = $maximoPuntos;
         $this->requisito = $requisito;
         $this->minimo = $minimo;
         $this->presenta = $presenta;
     }
 
-    // Getter y Setter para idItemBarenables
-    public function getIdItemBarenables()
-    {
-        return $this->idItemBarenables;
+    // Métodos para establecer y obtener valores
+    public function setIdItemBaremo($idItemBaremo) {
+        $this->idItemBaremo = $idItemBaremo;
     }
 
-    public function setIdItemBarenables($idItemBarenables)
-    {
-        $this->idItemBarenables = $idItemBarenables;
+    public function getIdItemBaremo() {
+        return $this->idItemBaremo;
     }
 
-    // Getter y Setter para idConvocatorias
-    public function getIdConvocatorias()
-    {
-        return $this->idConvocatorias;
+    public function setIdConvocatoria($idConvocatoria) {
+        $this->idConvocatoria = $idConvocatoria;
     }
 
-    public function setIdConvocatorias($idConvocatorias)
-    {
-        $this->idConvocatorias = $idConvocatorias;
+    public function getIdConvocatoria() {
+        return $this->idConvocatoria;
     }
 
-    // Getter y Setter para maximoPuntos
-    public function getMaximoPuntos()
-    {
+    public function setMaximoPuntos($maximoPuntos) {
+        $this->maximoPuntos = $maximoPuntos;
+    }
+
+    public function getMaximoPuntos() {
         return $this->maximoPuntos;
     }
 
-    public function setMaximoPuntos($maximoPuntos)
-    {
-        $this->maximoPuntos = $maximoPuntos;
-    }
-
-    // Getter y Setter para requisito
-    public function getRequisito()
-    {
-        return $this->requisito;
-    }
-
-    public function setRequisito($requisito)
-    {
+    public function setRequisito($requisito) {
         $this->requisito = $requisito;
     }
 
-    // Getter y Setter para minimo
-    public function getMinimo()
-    {
-        return $this->minimo;
+    public function getRequisito() {
+        return $this->requisito;
     }
 
-    public function setMinimo($minimo)
-    {
+    public function setMinimo($minimo) {
         $this->minimo = $minimo;
     }
 
-    // Getter y Setter para presenta
-    public function getPresenta()
-    {
-        return $this->presenta;
+    public function getMinimo() {
+        return $this->minimo;
     }
 
-    public function setPresenta($presenta)
-    {
+    public function setPresenta($presenta) {
         $this->presenta = $presenta;
     }
-}
 
+    public function getPresenta() {
+        return $this->presenta;
+    }
+}
 ?>

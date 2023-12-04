@@ -1,6 +1,9 @@
 <?php
 
     require_once $_SERVER["DOCUMENT_ROOT"] . '/helpers/sesion.php';
+
+    // Creamos validator
+    $valida = new Validator();
     Sesion::iniciar_sesion();
     $user = Sesion::leer_sesion("usuario");
     $nombre = $user->getNombre();
@@ -37,7 +40,9 @@
     <nav>
         <div id="nav">
             <div id="izquierda">
-                <img src="http://virtual.localfj.com/interfaces/imagenes/logo2.png" id="imagenIzquierda">
+            <a href="?menu=home">
+                <img src="http://virtual.localfj.com/interfaces/imagenes/logo.png" id="imagenIzquierda" alt="Texto alternativo">
+            </a>
             </div>
             <div id="centro">
                 <h1>Crear Convocatoria</h1>
@@ -45,7 +50,7 @@
             <div id="derecha">
                 <div id="menuDesplegable" style="display: none;">
                     <ul>
-                        <li><a href="?menu=login">Bienvenido<?php echo $nombre; ?></li>
+                        <li><a href="?menu=perfil">Bienvenido <?php echo $nombre; ?></li>
                         <li><a href="?menu=login">Cerrar Sesión</a></li>
                     </ul>
                 </div>
@@ -56,13 +61,15 @@
     <script src="http://virtual.localfj.com/interfaces/js/despegable.js"></script>
     <form>
         <fieldset>
-            <label for="proyecto">Proyecto:</label>
+            <label for="proyecto" name="proyecto">Proyecto:</label>
             <select id="proyecto">
                 <option selected disabled>Selecciona un proyecto</option>
             </select>
+            <span class="error"><?= $valida->ImprimirError('proyecto') ?></span>
 
             <label for="movilidades">Movilidades:</label>
-            <input type="number" id="movilidades">
+            <input type="number" id="movilidades" name="movilidades">
+            <span class="error"><?= $valida->ImprimirError('movilidades') ?></span>
         </fieldset>
 
         <fieldset>
@@ -72,28 +79,29 @@
             </select>
 
             <label for="destino">Destino:</label>
-            <input type="text" id="destino">
+            <input type="text" id="destino" name="destino">
+            <span class="error"><?= $valida->ImprimirError('destino') ?></span>
         </fieldset>
         <fieldset>
             <label for="fecha_inicio">Fecha inicio:</label>
-            <input type="date" id="fecha_inicio">
+            <input type="date" id="fecha_inicio"name="fecha_inicio">
 
             <label for="fecha_inicio_prueba">Fecha inicio prueba:</label>
-            <input type="date" id="fecha_inicio_prueba">
+            <input type="date" id="fecha_inicio_prueba" name="fecha_inicio_prueba">
 
             <label for="fecha_listado_provisional">Fecha listado provisional:</label>
-            <input type="date" id="fecha_listado_provisional">
+            <input type="date" id="fecha_listado_provisional" name="fecha_listado_provisional">
 
         </fieldset>
         <fieldset>
             <label for="fecha_fin">Fecha fin:</label>
-            <input type="date" id="fecha_fin">
+            <input type="date" id="fecha_fin" name="fecha_fin">
 
             <label for="fecha_fin_prueba">Fecha fin prueba:</label>
-            <input type="date" id="fecha_fin_prueba">
+            <input type="date" id="fecha_fin_prueba" name="fecha_fin_prueba">
 
             <label for="fecha_listado_definitivo">Fecha listado definitivo:</label>
-            <input type="date" id="fecha_listado_definitivo">
+            <input type="date" id="fecha_listado_definitivo" name="fecha_listado_definitivo">
         </fieldset>
 
         <table>

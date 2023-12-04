@@ -36,6 +36,10 @@
             <h2>Sección 3</h2>
             <p>Contenido de la sección 3.</p>
         </section>
+        <a href="?menu=crearConvocatoria" class="boton-enlace">
+            Crear Convocatoria
+        </a>
+
     </main>
 
     <footer>

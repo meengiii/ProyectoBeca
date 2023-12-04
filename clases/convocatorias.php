@@ -1,7 +1,7 @@
 <?php
-
-class Convocatorias
+class Convocatorias implements JsonSerializable
 {
+    // Propiedades de la clase
     private $idConvocatorias;
     private $movilidades;
     private $tipo;
@@ -15,7 +15,7 @@ class Convocatorias
     private $candidatosIdCandidato;
 
     // Constructor
-    public function __construct($idConvocatorias, $movilidades, $tipo, $fechaIni, $fechaFin, $fechaIniBaremacion, $fechaFinBaremacion, $fechaLisProvisional, $fechaLisDefinitiva, $proyectosCodProyecto, $candidatosIdCandidato)
+    public function __construct($idConvocatorias,$movilidades, $tipo, $fechaIni, $fechaFin, $fechaIniBaremacion, $fechaFinBaremacion, $fechaLisProvisional, $fechaLisDefinitiva, $proyectosCodProyecto, $candidatosIdCandidato)
     {
         $this->idConvocatorias = $idConvocatorias;
         $this->movilidades = $movilidades;
@@ -28,12 +28,6 @@ class Convocatorias
         $this->fechaLisDefinitiva = $fechaLisDefinitiva;
         $this->proyectosCodProyecto = $proyectosCodProyecto;
         $this->candidatosIdCandidato = $candidatosIdCandidato;
-    }
-
-    // Getter y Setter para idConvocatorias
-    public function getIdConvocatorias()
-    {
-        return $this->idConvocatorias;
     }
 
     public function setIdConvocatorias($idConvocatorias)
@@ -41,10 +35,9 @@ class Convocatorias
         $this->idConvocatorias = $idConvocatorias;
     }
 
-    // Getter y Setter para movilidades
-    public function getMovilidades()
+    public function getIdConvocatorias()
     {
-        return $this->movilidades;
+        return $this->idConvocatorias;
     }
 
     public function setMovilidades($movilidades)
@@ -52,10 +45,9 @@ class Convocatorias
         $this->movilidades = $movilidades;
     }
 
-    // Getter y Setter para tipo
-    public function getTipo()
+    public function getMovilidades()
     {
-        return $this->tipo;
+        return $this->movilidades;
     }
 
     public function setTipo($tipo)
@@ -63,10 +55,9 @@ class Convocatorias
         $this->tipo = $tipo;
     }
 
-    // Getter y Setter para fechaIni
-    public function getFechaIni()
+    public function getTipo()
     {
-        return $this->fechaIni;
+        return $this->tipo;
     }
 
     public function setFechaIni($fechaIni)
@@ -74,10 +65,9 @@ class Convocatorias
         $this->fechaIni = $fechaIni;
     }
 
-    // Getter y Setter para fechaFin
-    public function getFechaFin()
+    public function getFechaIni()
     {
-        return $this->fechaFin;
+        return $this->fechaIni;
     }
 
     public function setFechaFin($fechaFin)
@@ -85,10 +75,9 @@ class Convocatorias
         $this->fechaFin = $fechaFin;
     }
 
-    // Getter y Setter para fechaIniBaremacion
-    public function getFechaIniBaremacion()
+    public function getFechaFin()
     {
-        return $this->fechaIniBaremacion;
+        return $this->fechaFin;
     }
 
     public function setFechaIniBaremacion($fechaIniBaremacion)
@@ -96,10 +85,9 @@ class Convocatorias
         $this->fechaIniBaremacion = $fechaIniBaremacion;
     }
 
-    // Getter y Setter para fechaFinBaremacion
-    public function getFechaFinBaremacion()
+    public function getFechaIniBaremacion()
     {
-        return $this->fechaFinBaremacion;
+        return $this->fechaIniBaremacion;
     }
 
     public function setFechaFinBaremacion($fechaFinBaremacion)
@@ -107,10 +95,9 @@ class Convocatorias
         $this->fechaFinBaremacion = $fechaFinBaremacion;
     }
 
-    // Getter y Setter para fechaLisProvisional
-    public function getFechaLisProvisional()
+    public function getFechaFinBaremacion()
     {
-        return $this->fechaLisProvisional;
+        return $this->fechaFinBaremacion;
     }
 
     public function setFechaLisProvisional($fechaLisProvisional)
@@ -118,10 +105,9 @@ class Convocatorias
         $this->fechaLisProvisional = $fechaLisProvisional;
     }
 
-    // Getter y Setter para fechaLisDefinitiva
-    public function getFechaLisDefinitiva()
+    public function getFechaLisProvisional()
     {
-        return $this->fechaLisDefinitiva;
+        return $this->fechaLisProvisional;
     }
 
     public function setFechaLisDefinitiva($fechaLisDefinitiva)
@@ -129,10 +115,9 @@ class Convocatorias
         $this->fechaLisDefinitiva = $fechaLisDefinitiva;
     }
 
-    // Getter y Setter para proyectosCodProyecto
-    public function getProyectosCodProyecto()
+    public function getFechaLisDefinitiva()
     {
-        return $this->proyectosCodProyecto;
+        return $this->fechaLisDefinitiva;
     }
 
     public function setProyectosCodProyecto($proyectosCodProyecto)
@@ -140,16 +125,25 @@ class Convocatorias
         $this->proyectosCodProyecto = $proyectosCodProyecto;
     }
 
-    // Getter y Setter para candidatosIdCandidato
-    public function getCandidatosIdCandidato()
+    public function getProyectosCodProyecto()
     {
-        return $this->candidatosIdCandidato;
+        return $this->proyectosCodProyecto;
     }
 
     public function setCandidatosIdCandidato($candidatosIdCandidato)
     {
         $this->candidatosIdCandidato = $candidatosIdCandidato;
     }
-}
 
+    public function getCandidatosIdCandidato()
+    {
+        return $this->candidatosIdCandidato;
+    }
+
+    // Método de la interfaz JsonSerializable para serializar el objeto a JSON
+    public function jsonSerialize() {
+        $vars = get_object_vars($this);
+        return $vars; 
+    }
+}
 ?>

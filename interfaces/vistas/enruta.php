@@ -36,10 +36,10 @@ if (isset($_GET['menu']))
         require_once $_SERVER["DOCUMENT_ROOT"] . '/interfaces/vistas/crearConvocatoria.php';
     }
 
-    // if ($_GET['menu'] == "homeprof") 
-    // {
-    //     require_once $_SERVER["DOCUMENT_ROOT"] . '/vistas/homeProf.php';
-    // }
+    if ($_GET['menu'] == "perfil") 
+    {
+       require_once $_SERVER["DOCUMENT_ROOT"] . '/interfaces/vistas/perfil.php';
+    }
 
     // if ($_GET['menu'] == "crea") 
     // {

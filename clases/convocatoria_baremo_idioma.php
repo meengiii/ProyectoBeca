@@ -1,64 +1,51 @@
 <?php
-
-class Convocatoria_Baremo_Idioma
-{
-    private $convocatoriaBaremoIdItemBarenables;
-    private $convocatoriaBaremoIdConvocatorias;
-    private $nivelIdiomasNivel;
+class ConvocatoriaBaremoIdioma {
+    // Propiedades de la clase
+    private $idItemBaremo;
+    private $idConvocatoria;
+    private $nivelIdioma;
     private $puntos;
 
     // Constructor
-    public function __construct($convocatoriaBaremoIdItemBarenables, $convocatoriaBaremoIdConvocatorias, $nivelIdiomasNivel, $puntos)
-    {
-        $this->convocatoriaBaremoIdItemBarenables = $convocatoriaBaremoIdItemBarenables;
-        $this->convocatoriaBaremoIdConvocatorias = $convocatoriaBaremoIdConvocatorias;
-        $this->nivelIdiomasNivel = $nivelIdiomasNivel;
+    public function __construct($idItemBaremo, $idConvocatoria, $nivelIdioma, $puntos) {
+        $this->idItemBaremo = $idItemBaremo;
+        $this->idConvocatoria = $idConvocatoria;
+        $this->nivelIdioma = $nivelIdioma;
         $this->puntos = $puntos;
     }
 
-    // Getter y Setter para convocatoriaBaremoIdItemBarenables
-    public function getConvocatoriaBaremoIdItemBarenables()
-    {
-        return $this->convocatoriaBaremoIdItemBarenables;
+    // Métodos para establecer y obtener valores
+    public function setIdItemBaremo($idItemBaremo) {
+        $this->idItemBaremo = $idItemBaremo;
     }
 
-    public function setConvocatoriaBaremoIdItemBarenables($convocatoriaBaremoIdItemBarenables)
-    {
-        $this->convocatoriaBaremoIdItemBarenables = $convocatoriaBaremoIdItemBarenables;
+    public function getIdItemBaremo() {
+        return $this->idItemBaremo;
     }
 
-    // Getter y Setter para convocatoriaBaremoIdConvocatorias
-    public function getConvocatoriaBaremoIdConvocatorias()
-    {
-        return $this->convocatoriaBaremoIdConvocatorias;
+    public function setIdConvocatoria($idConvocatoria) {
+        $this->idConvocatoria = $idConvocatoria;
     }
 
-    public function setConvocatoriaBaremoIdConvocatorias($convocatoriaBaremoIdConvocatorias)
-    {
-        $this->convocatoriaBaremoIdConvocatorias = $convocatoriaBaremoIdConvocatorias;
+    public function getIdConvocatoria() {
+        return $this->idConvocatoria;
     }
 
-    // Getter y Setter para nivelIdiomasNivel
-    public function getNivelIdiomasNivel()
-    {
-        return $this->nivelIdiomasNivel;
+    public function setNivelIdioma($nivelIdioma) {
+        $this->nivelIdioma = $nivelIdioma;
     }
 
-    public function setNivelIdiomasNivel($nivelIdiomasNivel)
-    {
-        $this->nivelIdiomasNivel = $nivelIdiomasNivel;
+    public function getNivelIdioma() {
+        return $this->nivelIdioma;
     }
 
-    // Getter y Setter para puntos
-    public function getPuntos()
-    {
+    public function setPuntos($puntos) {
+        $this->puntos = $puntos;
+    }
+
+    public function getPuntos() {
         return $this->puntos;
     }
 
-    public function setPuntos($puntos)
-    {
-        $this->puntos = $puntos;
-    }
 }
-
 ?>

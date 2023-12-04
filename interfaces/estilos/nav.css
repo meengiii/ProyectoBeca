@@ -1,12 +1,12 @@
 #nav {
-    width: 100%;
+    width: 99,8%;
     padding: 10px;
-    background-color: #d3cccc;
+    background-color: #f4e5e5;
     display: flex;
     justify-content: space-between;
     margin-bottom: 3%;
-    border-top-left-radius: 9%; 
-    border-top-right-radius: 9%;
+    /* border-top-left-radius: 9%; 
+    border-top-right-radius: 9%; */
 }
 
 #izquierda,
