@@ -8,7 +8,8 @@ class candidatoConvocatoriaRepo
         $this->db = $conexion;
     }
 
-    public function insertarCandidatoConvocatoria($candidatoConvocatoria) {
+    public function insertarCandidatoConvocatoria($candidatoConvocatoria) 
+    {
         $query = "INSERT INTO candidato_convocatorias (Convocatorias_idConvocatorias, Candidatos_idCandidato) 
                   VALUES (:idConvocatoria, :idCandidato)";
 
@@ -23,7 +24,8 @@ class candidatoConvocatoriaRepo
         return $statement->execute();
     }
 
-    public function borrarCandidatoConvocatoria($candidatoConvocatoria) {
+    public function borrarCandidatoConvocatoria($candidatoConvocatoria) 
+    {
         $query = "DELETE FROM candidato_convocatorias 
                   WHERE Convocatorias_idConvocatorias = :idConvocatoria 
                   AND Candidatos_idCandidato = :idCandidato";
@@ -39,7 +41,8 @@ class candidatoConvocatoriaRepo
         return $statement->execute();
     }
 
-    public function actualizarCandidatoConvocatoria($candidatoConvocatoria) {
+    public function actualizarCandidatoConvocatoria($candidatoConvocatoria) 
+    {
         $query = "UPDATE candidato_convocatorias 
                   SET Convocatorias_idConvocatorias = :nuevoIdConvocatoria, Candidatos_idCandidato = :nuevoIdCandidato 
                   WHERE Convocatorias_idConvocatorias = :idConvocatoria AND Candidatos_idCandidato = :idCandidato";
@@ -60,7 +63,8 @@ class candidatoConvocatoriaRepo
     }
     
 
-    public function leerTodos() {
+    public function leerTodos() 
+    {
         $query = "SELECT Convocatorias_idConvocatorias, Candidatos_idCandidato FROM candidato_convocatorias";
         $statement = $this->db->prepare($query);
         $statement->execute();
@@ -69,7 +73,8 @@ class candidatoConvocatoriaRepo
     
         $candidatoConvocatorias = array();
     
-        foreach ($candidatoConvocatoriasList as $candidatoConvocatoriaData) {
+        foreach ($candidatoConvocatoriasList as $candidatoConvocatoriaData) 
+        {
             $candidatoConvocatoria = new CandidatoConvocatoria($candidatoConvocatoriaData['Convocatorias_idConvocatorias'], $candidatoConvocatoriaData['Candidatos_idCandidato']);
             $candidatoConvocatorias[] = $candidatoConvocatoria;
         }
@@ -77,7 +82,8 @@ class candidatoConvocatoriaRepo
         return $candidatoConvocatorias;
     }
 
-    public function leerCandidatoConvocatoria($candidatoConvocatoria) {
+    public function leerCandidatoConvocatoria($candidatoConvocatoria) 
+    {
         $query = "SELECT * FROM candidato_convocatorias WHERE Convocatorias_idConvocatorias = :idConvocatoria AND Candidatos_idCandidato = :idCandidato";
         $statement = $this->db->prepare($query);
 
@@ -90,8 +96,10 @@ class candidatoConvocatoriaRepo
     
         $candidatoConvocatoriaData = $statement->fetch(PDO::FETCH_ASSOC);
     
-        if ($candidatoConvocatoriaData) {
-            return new CandidatoConvocatoria(
+        if ($candidatoConvocatoriaData) 
+        {
+            return new CandidatoConvocatoria
+            (
                 $candidatoConvocatoriaData['Convocatorias_idConvocatorias'],
                 $candidatoConvocatoriaData['Candidatos_idCandidato']
             );

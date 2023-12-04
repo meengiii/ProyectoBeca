@@ -8,18 +8,21 @@ class ConvocatoriaRepository
         $this->db = $conexion;
     }
 
-    public function obtenerConvocatoriasActivas($idCandidato) {
+    public function obtenerConvocatoriasActivas($idCandidato) 
+    {
         $query = "SELECT *
-            FROM Convocatorias
-            WHERE idCandidato = :idCandidato";
+                  FROM Convocatorias
+                  WHERE idCandidato = :idCandidato";
 
         $statement = $this->db->prepare($query);
         $statement->bindParam(':idCandidato', $idCandidato, PDO::PARAM_INT);
         $statement->execute();
 
         $convocatoriasActivas = [];
-        while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-            $convocatoria = new Convocatorias(
+        while ($row = $statement->fetch(PDO::FETCH_ASSOC)) 
+        {
+            $convocatoria = new Convocatorias
+            (
                 $row['idConvocatorias'],
                 $row['Movilidades'],
                 $row['Tiipo'],
@@ -40,7 +43,8 @@ class ConvocatoriaRepository
         return $convocatoriasActivas;
     }
 
-    public function insertarConvocatoria($convocatoria) {
+    public function insertarConvocatoria($convocatoria) 
+    {
         $query = "INSERT INTO Convocatorias 
                   (Movilidades, Tiipo, Fecha_ini, Fecha_fin, Fecha_ini_baremacion, 
                   Fecha_fin_baremacion, Fecha_lis_provisional, Fecha_lis_definitiva, 
@@ -65,7 +69,8 @@ class ConvocatoriaRepository
 
         return $statement->execute();
     }
-    public function borrarConvocatoria($idConvocatoria) {
+    public function borrarConvocatoria($idConvocatoria) 
+    {
         $query = "DELETE FROM Convocatorias WHERE idConvocatorias = :idConvocatoria";
 
         $statement = $this->db->prepare($query);
@@ -74,7 +79,8 @@ class ConvocatoriaRepository
         return $statement->execute();
     }
 
-    public function actualizarConvocatoria($convocatoria) {
+    public function actualizarConvocatoria($convocatoria) 
+    {
         $query = "UPDATE Convocatorias 
                   SET Movilidades = :movilidades,
                       Tiipo = :tiipo,

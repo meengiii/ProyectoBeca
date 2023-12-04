@@ -93,8 +93,10 @@ class ProyectosRepository
 
         $proyectoData = $statement->fetch(PDO::FETCH_ASSOC);
 
-        if ($proyectoData) {
-            $proyecto = new Proyectos(
+        if ($proyectoData) 
+        {
+            $proyecto = new Proyectos
+            (
                 $proyectoData['CodProyecto'],
                 $proyectoData['nombre'],
                 $proyectoData['fechaIni'],

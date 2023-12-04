@@ -7,7 +7,8 @@ class ItemBarenablesRepository {
         $this->db = $conexion;
     }
 
-    public function insertarItemBarenable($itemBarenable) {
+    public function insertarItemBarenable($itemBarenable) 
+    {
         $query = "INSERT INTO item_barenables (nombre) 
                   VALUES (:nombre)";
 
@@ -20,7 +21,8 @@ class ItemBarenablesRepository {
         return $statement->execute();
     }
 
-    public function borrarItemBarenable( $itemBarenable) {
+    public function borrarItemBarenable( $itemBarenable) 
+    {
         $query = "DELETE FROM item_barenables 
                   WHERE idItemBarenables = :idItemBarenables";
 
@@ -33,7 +35,8 @@ class ItemBarenablesRepository {
         return $statement->execute();
     }
 
-    public function actualizarItemBarenable( $itemBarenable) {
+    public function actualizarItemBarenable( $itemBarenable) 
+    {
         $query = "UPDATE item_barenables 
                   SET nombre = :nuevoNombre
                   WHERE idItemBarenables = :idItemBarenables";
@@ -49,7 +52,8 @@ class ItemBarenablesRepository {
         return $statement->execute();
     }
 
-    public function leerTodos() {
+    public function leerTodos() 
+    {
         $query = "SELECT idItemBarenables, nombre FROM item_barenables";
         $statement = $this->db->prepare($query);
         $statement->execute();
@@ -58,8 +62,10 @@ class ItemBarenablesRepository {
     
         $itemBarenables = array();
     
-        foreach ($itemBarenablesList as $itemBarenableData) {
-            $itemBarenable = new ItemBarenables(
+        foreach ($itemBarenablesList as $itemBarenableData) 
+        {
+            $itemBarenable = new ItemBarenables
+            (
                 $itemBarenableData['nombre']
             );
             $itemBarenable->setIdItemBarenables($itemBarenableData['idItemBarenables']);
@@ -69,7 +75,8 @@ class ItemBarenablesRepository {
         return $itemBarenables;
     }
 
-    public function leerItemBarenable($idItemBarenables) {
+    public function leerItemBarenable($idItemBarenables) 
+    {
         $query = "SELECT * FROM item_barenables WHERE idItemBarenables = :idItemBarenables";
         $statement = $this->db->prepare($query);
         $statement->bindParam(':idItemBarenables', $idItemBarenables, PDO::PARAM_INT);
@@ -77,8 +84,10 @@ class ItemBarenablesRepository {
     
         $itemBarenableData = $statement->fetch(PDO::FETCH_ASSOC);
     
-        if ($itemBarenableData) {
-            $itemBarenable = new ItemBarenables(
+        if ($itemBarenableData) 
+        {
+            $itemBarenable = new ItemBarenables
+            (
                 $itemBarenableData['nombre']
             );
             $itemBarenable->setIdItemBarenables($itemBarenableData['idItemBarenables']);

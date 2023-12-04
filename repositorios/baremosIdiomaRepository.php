@@ -8,7 +8,8 @@ class BaremosIdiomaRepository
         $this->db = $conexion;
     }
 
-    public function insertarNivelIdioma($nivelIdioma) {
+    public function insertarNivelIdioma($nivelIdioma) 
+    {
         $query = "INSERT INTO nivel_idiomas (nivel) 
                   VALUES (:nivel)";
 
@@ -20,7 +21,8 @@ class BaremosIdiomaRepository
         return $statement->execute();
     }
 
-    public function borrarNivelIdioma($idNivelIdioma) {
+    public function borrarNivelIdioma($idNivelIdioma) 
+    {
         $query = "DELETE FROM nivel_idiomas 
                   WHERE idNivelIdioma = :idNivelIdioma";
 
@@ -31,7 +33,8 @@ class BaremosIdiomaRepository
         return $statement->execute();
     }
 
-    public function actualizarNivelIdioma($nivelIdioma) {
+    public function actualizarNivelIdioma($nivelIdioma) 
+    {
         $query = "UPDATE nivel_idiomas 
                   SET nivel = :nivel
                   WHERE idNivelIdioma = :idNivelIdioma";
@@ -47,7 +50,8 @@ class BaremosIdiomaRepository
         return $statement->execute();
     }
 
-    public function leerTodos() {
+    public function leerTodos() 
+    {
         $query = "SELECT idNivelIdioma, nivel FROM nivel_idiomas";
         $statement = $this->db->prepare($query);
         $statement->execute();
@@ -56,8 +60,10 @@ class BaremosIdiomaRepository
     
         $nivelIdiomas = array();
     
-        foreach ($nivelIdiomasList as $nivelIdiomaData) {
-            $nivelIdiomas[] = new NivelIdiomas(
+        foreach ($nivelIdiomasList as $nivelIdiomaData) 
+        {
+            $nivelIdiomas[] = new NivelIdiomas
+            (
                 $nivelIdiomaData['nivel']
             );
         }
@@ -65,7 +71,8 @@ class BaremosIdiomaRepository
         return $nivelIdiomas;
     }
 
-    public function leerNivelIdioma($idNivelIdioma) {
+    public function leerNivelIdioma($idNivelIdioma) 
+    {
         $query = "SELECT * FROM nivel_idiomas WHERE idNivelIdioma = :idNivelIdioma";
         $statement = $this->db->prepare($query);
         $statement->bindParam(':idNivelIdioma', $idNivelIdioma, PDO::PARAM_INT);
@@ -73,7 +80,8 @@ class BaremosIdiomaRepository
     
         $nivelIdiomaData = $statement->fetch(PDO::FETCH_ASSOC);
     
-        if ($nivelIdiomaData) {
+        if ($nivelIdiomaData) 
+        {
             return new NivelIdiomas(
                 $nivelIdiomaData['nivel']
             );

@@ -8,7 +8,8 @@ class ConvocatoriasBaremoRepo
         $this->db = $conexion;
     }
 
-    public function insertarConvocatoriaBaremo($convocatoriaBaremo) {
+    public function insertarConvocatoriaBaremo($convocatoriaBaremo) 
+    {
         $query = "INSERT INTO convocatoria_baremo (idItemBaremo, idConvocatoria, maximoPuntos, requisito, minimo, presenta) 
                   VALUES (:idItemBaremo, :idConvocatoria, :maximoPuntos, :requisito, :minimo, :presenta)";
 
@@ -31,7 +32,8 @@ class ConvocatoriasBaremoRepo
         return $statement->execute();
     }
 
-    public function borrarConvocatoriaBaremo($convocatoriaBaremo) {
+    public function borrarConvocatoriaBaremo($convocatoriaBaremo) 
+    {
         $idItemBaremo = $convocatoriaBaremo->getIdItemBaremo();
         $idConvocatoria = $convocatoriaBaremo->getIdConvocatoria();
 
@@ -47,7 +49,8 @@ class ConvocatoriasBaremoRepo
         return $statement->execute();
     }
 
-    public function actualizarConvocatoriaBaremo($convocatoriaBaremo) {
+    public function actualizarConvocatoriaBaremo($convocatoriaBaremo) 
+    {
         $idItemBaremo = $convocatoriaBaremo->getIdItemBaremo();
         $idConvocatoria = $convocatoriaBaremo->getIdConvocatoria();
         $nuevoIdItemBaremo = $convocatoriaBaremo->getNuevoIdItemBaremo();
@@ -81,7 +84,8 @@ class ConvocatoriasBaremoRepo
         return $statement->execute();
     }
 
-    public function leerTodos() {
+    public function leerTodos() 
+    {
         $query = "SELECT idItemBaremo, idConvocatoria, maximoPuntos, requisito, minimo, presenta FROM convocatoria_baremo";
         $statement = $this->db->prepare($query);
         $statement->execute();
@@ -104,7 +108,8 @@ class ConvocatoriasBaremoRepo
         return $convocatoriaBaremo;
     }
 
-    public function leerConvocatoriaBaremo($idItemBaremo, $idConvocatoria) {
+    public function leerConvocatoriaBaremo($idItemBaremo, $idConvocatoria) 
+    {
         $query = "SELECT * FROM convocatoria_baremo WHERE idItemBaremo = :idItemBaremo AND idConvocatoria = :idConvocatoria";
         $statement = $this->db->prepare($query);
         $statement->bindParam(':idItemBaremo', $idItemBaremo, PDO::PARAM_INT);
@@ -113,8 +118,10 @@ class ConvocatoriasBaremoRepo
     
         $convocatoriaBaremoData = $statement->fetch(PDO::FETCH_ASSOC);
     
-        if ($convocatoriaBaremoData) {
-            return new ConvocatoriaBaremo(
+        if ($convocatoriaBaremoData) 
+        {
+            return new ConvocatoriaBaremo
+            (
                 $convocatoriaBaremoData['idItemBaremo'],
                 $convocatoriaBaremoData['idConvocatoria'],
                 $convocatoriaBaremoData['maximoPuntos'],
